@@ -24,18 +24,22 @@ default (MisoString)
 
 main :: IO ()
 main =
-  startApp emptyModel updateModel viewModel subs defaultEvents
-    where
-      subs = [ mouseSub HandleMouse
-             , windowSub HandleWindow
-             , keyboardSub HandleKeys
-             ]
+  startApp App {..}
+  where
+    model = emptyModel
+    update = updateModel
+    view = viewModel
+    events = defaultEvents
+    subs = [ mouseSub HandleMouse
+           , windowSub HandleWindow
+           , keyboardSub HandleKeys
+           ]
 
 emptyModel :: Model
 emptyModel = Model (0,0) (0,0) mempty 0
 
 -- | Updates model, can perform side-effects
-updateModel :: Action -> Model -> Effect Model Action
+updateModel :: Action -> Model -> Effect Action Model
 updateModel (HandleMouse newCoords) model = noEff model { mouseCoords = newCoords }
 updateModel (HandleWindow newCoords) model = noEff model { windowCoords = newCoords }
 updateModel (HandleKeys newKeys) model = noEff model { keys = newKeys }
