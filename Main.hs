@@ -17,6 +17,7 @@ import qualified Data.Map           as M
 import           Data.Monoid
 import qualified Data.Set           as S
 import           Miso
+import           Miso.String        (MisoString)
 import           Miso.Svg           hiding (height_, id_, style_, width_)
 
 default (MisoString)
