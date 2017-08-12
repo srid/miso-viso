@@ -7,7 +7,7 @@ For faster edit-compile-run cycle it is recommended to to use `GHCJSi` as follow
 First, enter the Nix configured shell environment:
 
 ```
-nix-shell
+nix-shell -A env
 ```
 
 Then, enter the GHCJSi shell:
@@ -18,23 +18,23 @@ cabal configure --ghcjs
 cabal repl
 ```
 
-GHCJSi starts up a webserver. You should connect to it from the web browser now at http://localhost:6400/
+GHCJSi starts up a web server. You should immediately connect to it from the web browser via http://localhost:6400/
 
 
-From the GHCJSi shell, everytime `Main.js` changes, recompile and send the new code to the browser:
+From the GHCJSi shell--and everytime `Main.js` changes--recompile and send the new code to the browser:
 
 ```
 > :r
-> clear > main
+> clear >> main
 ```
 
-The Html document in the webbrowser will update automatically with the new code!
+The UI in the web browser will now update automatically with the new code. Happy hacking!
 
 ## Production
 
-This application be built for production and run as follows:
+This application can be built for production and run as follows:
 
 ```
 nix-build
-warp -d result/bin/app.jsexe/
+warp -d result/bin/app.jsexe/  # Port 3000
 ```
