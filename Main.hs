@@ -2,6 +2,7 @@
 {-# LANGUAGE RecordWildCards   #-}
 {-# LANGUAGE TypeFamilies      #-}
 {-# LANGUAGE TypeOperators     #-}
+
 module Main where
 
 import qualified Data.Map    as M
@@ -9,6 +10,10 @@ import qualified Data.Map    as M
 import           Miso
 import           Miso.String (MisoString, pack)
 import           Miso.Svg    hiding (height_, id_, style_, width_)
+
+foreign import javascript unsafe "document.body.innerHTML = '';"
+    clear :: IO ()
+
 
 main :: IO ()
 main = startApp App {..}
@@ -57,7 +62,7 @@ viewModel (Model (x,y)) =
 svgStyle :: M.Map MisoString MisoString
 svgStyle =
   M.fromList [
-      ("fill", "pink")
+      ("fill", "green")
     , ("stroke", "black")
     , ("stroke-width", "2")
     ]
