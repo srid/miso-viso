@@ -24,8 +24,9 @@ GHCJSi starts up a web server. You should immediately connect to it from the web
 From the GHCJSi shell--and everytime `Main.js` changes--recompile and send the new code to the browser:
 
 ```
+> import Miso.Dev  # Once
 > :r
-> clear >> main
+> clearBody >> main
 ```
 
 The UI in the web browser will now update automatically with the new code. Happy hacking!

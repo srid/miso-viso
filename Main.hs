@@ -11,10 +11,6 @@ import           Miso
 import           Miso.String (MisoString, pack)
 import           Miso.Svg    hiding (height_, id_, style_, width_)
 
-foreign import javascript unsafe "document.body.innerHTML = '';"
-    clear :: IO ()
-
-
 main :: IO ()
 main = startApp App {..}
   where
@@ -62,7 +58,7 @@ viewModel (Model (x,y)) =
 svgStyle :: M.Map MisoString MisoString
 svgStyle =
   M.fromList [
-      ("fill", "green")
+      ("fill", "blue")
     , ("stroke", "black")
     , ("stroke-width", "2")
     ]
